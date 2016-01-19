@@ -1,13 +1,12 @@
 package runner;
 
 import cucumber.api.CucumberOptions;
-import cucumber.api.junit.Cucumber;
-import org.junit.runner.RunWith;
+import cucumber.api.testng.AbstractTestNGCucumberTests;
 
-@RunWith(Cucumber.class)
+//@RunWith(Cucumber.class)
 @CucumberOptions(
         tags = "@login",
-        glue = {"step_definitions", "hooks"},
+        glue = {"step_definitions","hooks"},
         features = {
                 "classpath:cucumber"
         },
@@ -15,5 +14,5 @@ import org.junit.runner.RunWith;
 //        dryRun = true
 )
 
-public class RunTest {
+public class RunTest extends AbstractTestNGCucumberTests {
 }
