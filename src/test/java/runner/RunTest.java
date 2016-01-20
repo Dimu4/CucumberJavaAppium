@@ -3,9 +3,7 @@ package runner;
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 
-//@RunWith(Cucumber.class)
 @CucumberOptions(
-        tags = "@login",
         glue = {"step_definitions","hooks"},
         features = {
                 "classpath:cucumber"
