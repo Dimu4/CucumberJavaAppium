@@ -26,13 +26,13 @@ public class CommonUtils {
     public static String APP_PASSWORD;
     private static String APPIUM_PORT;
     public static String AUTOMATION_INSTRUMENTATION;
-    public static String BROWSER_NAME;
     public static String PLATFORM_NAME;
-    public static String NEW_COMMAND_TIMEOUT;
+    public static Integer NEW_COMMAND_TIMEOUT;
     public static String PLATFORM_VERSION;
     public static String DEVICE_READY_TIMEOUT;
     public static String DEVICE_NAME;
     public static String APP;
+    public static String BROWSER_NAME;
     private static DesiredCapabilities capabilities = new DesiredCapabilities();
     private static URL serverUrl;
     private static AppiumDriver driver;
@@ -55,14 +55,14 @@ public class CommonUtils {
         BROWSER_NAME=prop.getProperty("browser.name");
         PLATFORM_NAME=prop.getProperty("platform.name");
         PLATFORM_VERSION=prop.getProperty("platform.version");
-        NEW_COMMAND_TIMEOUT=prop.getProperty("new.command.timeout");
+        NEW_COMMAND_TIMEOUT  = Integer.valueOf(prop.getProperty("new.command.timeout"));
         DEVICE_READY_TIMEOUT=prop.getProperty("device.ready.timeout");
     }
 
 
     public static void setIOSCapabilities() {
-        capabilities.setCapability(MobileCapabilityType.BROWSER_NAME,
-                CommonUtils.BROWSER_NAME);
+//        capabilities.setCapability(MobileCapabilityType.BROWSER_NAME,
+//                CommonUtils.BROWSER_NAME);
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION,
                 CommonUtils.PLATFORM_VERSION);
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME,

@@ -5,7 +5,8 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import support.TestBase;
 
-public class TestHooks extends TestBase{
+public class
+TestHooks extends TestBase{
     @Before
     public void startDirver(Scenario scenario) throws Exception {
         System.out.println("Starting Appium driver.....");
