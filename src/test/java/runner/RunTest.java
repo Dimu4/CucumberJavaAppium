@@ -4,11 +4,12 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 
 @CucumberOptions(
-        glue = {"step_definitions","hooks"},
+        tags = "@login",
+        glue = {"step_definitions", "hooks"},
         features = {
                 "classpath:cucumber"
         },
-        format = {"pretty", "html:target/cucumber.html", "json:target/cucumber.json", "junit:target/junit.xml"}
+        format = {"pretty", "html:target/cucumber.html", "junit:target/junit.xml"}
 //        dryRun = true
 )
 
