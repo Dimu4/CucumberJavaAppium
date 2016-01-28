@@ -2,6 +2,7 @@ package support;
 
 
 
+import hooks.TestHooks;
 import io.appium.java_client.AppiumDriver;
 
 import org.testng.annotations.AfterSuite;
@@ -19,12 +20,9 @@ public class TestBase {
     @BeforeSuite
 	public void setUp() throws IOException, InterruptedException{
 		System.out.println("Starting Appium driver.....");
-		if (driver == null) {
-			CommonUtils.loadIOSConfigProp(loadPropertyFile);
-			CommonUtils.setIOSCapabilities();
-			driver = CommonUtils.getIOSDriver();
-		}
+		driver = TestHooks.getDriver();
 	}
+
 
 //  @AfterSuite
 //	public void tearDown() throws IOException{
