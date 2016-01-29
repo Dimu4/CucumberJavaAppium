@@ -9,10 +9,11 @@ import utils.CommonUtils;
 
 public class
 TestHooks extends TestBase{
+
+
     @Before
     public void startDirver(Scenario scenario) throws Exception {
         if (driver == null) {
-            CommonUtils.loadIOSConfigProp(loadPropertyFile);
             CommonUtils.setIOSCapabilities();
             driver = CommonUtils.getIOSDriver();
         }
