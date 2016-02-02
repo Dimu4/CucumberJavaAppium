@@ -12,7 +12,17 @@ import support.TestBase;
 /**
  * Created by idorovskikh on 1/9/16.
  */
-public class LoginSteps extends TestBase {
+public class LoginSignupSteps extends TestBase {
+
+    @Given("^I login to Instagram app$")
+    public void iLoginToInstagramApp(){
+        driver.findElement(By.name("login_btn")).click();
+        driver.findElement(By.name("user_name")).sendKeys("igor");
+        driver.findElement(By.name("password")).sendKeys("password");
+        driver.findElement(By.name("login_btn")).click();
+        Boolean isLogged = driver.findElement(By.name("user_list")).isEnabled();
+        Assert.assertTrue(isLogged);
+    }
 
     @When("^I tap on Login button$")
     public void iTapOnLoginButton(){
@@ -38,11 +48,13 @@ public class LoginSteps extends TestBase {
 
     @Then("^I tap on Signup button$")
     public void iTapOnSignupButton(){
-        System.out.println("Signup button is tapped");
+        driver.findElement(By.name("sign_up_btn")).click();
     }
 
-    @And("^I verify that new user has been created$")
-    public void iVerifyThatNewUserHasBeenCreated(){
-        System.out.println("New user has been created!");
+    @And("^I verified \"([^\"]*)\" message$")
+    public void iVerifyThatNewUserHasBeenCreated(String error){
+        Boolean isUserExists = driver.findElement(By.name(error)).isDisplayed();
+        Assert.assertTrue(isUserExists);
+        driver.findElement(By.name("OK")).click();
     }
 }

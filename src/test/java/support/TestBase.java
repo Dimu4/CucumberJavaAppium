@@ -10,7 +10,6 @@ import org.testng.annotations.BeforeSuite;
 
 public class TestBase {
 
-
 	public static AppiumDriver driver;
 
     @BeforeSuite
