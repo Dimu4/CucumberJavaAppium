@@ -30,11 +30,14 @@ TestHooks extends TestBase{
     @After
     public void stoptDirver(Scenario scenario) {
         try{
+//            TODO: create new dir screenshots/
+//            TODO: get scenario name from scenario property and name screeshot based on that using regex
             File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             File testScreenShot = new File(System.getProperty("user.dir") + "/target/screenshot.jpg");
             FileUtils.copyFile(scrFile, testScreenShot);
 
 //            converting file to array of  bytes
+//            TODO: move to separate method
             byte[] b = new byte[(int) scrFile.length()];
             try {
                 FileInputStream fileInputStream = new FileInputStream(scrFile);
