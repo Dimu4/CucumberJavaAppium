@@ -20,7 +20,7 @@ TestHooks extends TestBase{
 
 
     @Before
-    public void startDirver(Scenario scenario) throws Exception {
+    public void startDriver(Scenario scenario) throws Exception {
         if (driver == null) {
             CommonUtils.setIOSCapabilities();
             driver = CommonUtils.getIOSDriver();
@@ -28,7 +28,7 @@ TestHooks extends TestBase{
     }
 
     @After
-    public void stoptDirver(Scenario scenario) {
+    public void stopDriver(Scenario scenario) {
         try{
 //            TODO: create new dir screenshots/
 //            TODO: get scenario name from scenario property and name screeshot based on that using regex
