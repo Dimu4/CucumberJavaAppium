@@ -1,6 +1,6 @@
+@login
 Feature: Instagram login
 
-  @login
   Scenario: As Instagram user, I can succesfully login
     When I tap on Login button
     Then I type "igor" into username field

@@ -41,7 +41,6 @@ public class LoginSignupSteps extends TestBase {
 
     @And("^I verify user is logged in$")
     public void iVerifyUserIsLoggedIn(){
-        System.out.println("User has been successfully logged in ");
         Boolean isLogged = driver.findElement(By.name("user_list")).isEnabled();
         Assert.assertTrue(isLogged);
     }
