@@ -1,12 +1,5 @@
 package step_definitions;
 
-import cucumber.api.PendingException;
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
-import org.openqa.selenium.By;
-import org.testng.Assert;
 import support.TestBase;
 
 /**
@@ -14,19 +7,5 @@ import support.TestBase;
  */
 public class PostImageSteps extends TestBase{
 
-    @Then("^I tap on \"([^\"]*)\" button$")
-    public void iTapOnButton(String btn){
-        driver.findElement(By.name(btn)).click();
-    }
 
-    @And("^I verify post image screen$")
-    public void iVerifyPostImageScreen(){
-        Boolean isLogged = driver.findElement(By.name("post_image_view")).isEnabled();
-        Assert.assertTrue(isLogged);
-    }
-
-    @Then("^I select (\\d+)st image from Gallery$")
-    public void iSelectStImageFromGallery(int index){
-        driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[1]")).click();
-    }
 }
