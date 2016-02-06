@@ -6,14 +6,14 @@ import cucumber.api.java.Before;
 import io.appium.java_client.AppiumDriver;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import support.TestBase;
 import utils.CommonUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class
 TestHooks extends TestBase{
@@ -29,38 +29,61 @@ TestHooks extends TestBase{
 
     @After
     public void stopDriver(Scenario scenario) {
-        try{
-//            TODO: create new dir screenshots/
-//            TODO: get scenario name from scenario property and name screeshot based on that using regex
-            File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            File testScreenShot = new File(System.getProperty("user.dir") + "/target/screenshot.jpg");
-            FileUtils.copyFile(scrFile, testScreenShot);
+        File scrFile = null;
 
-//            converting file to array of  bytes
-//            TODO: move to separate method
-            byte[] b = new byte[(int) scrFile.length()];
-            try {
-                FileInputStream fileInputStream = new FileInputStream(scrFile);
-                fileInputStream.read(b);
-                for (int i = 0; i < b.length; i++) System.out.print((char) b[i]);
-
-            } catch (FileNotFoundException e) {
-                System.out.println("File Not Found.");
-                e.printStackTrace();
-            }
-            catch (IOException e1) {
-                System.out.println("Error Reading The File.");
-                e1.printStackTrace();
-            }
-
-            scenario.embed(b, "image/png");
-        }catch (IOException e){
-            System.err.println(e.getMessage());
+        if (scenario.isFailed()) {
+            String name = scenario.getId();
+            createDir(name);
+            scrFile = takeScreenshot(name);
+            embedScreenShot(scenario ,scrFile);
         }
-        finally {
-            driver.resetApp();
+
+        driver.resetApp();
+    }
+
+    private void embedScreenShot(Scenario scenario, File scrFile) {
+
+        byte[] convertedScreen = new byte[(int) scrFile.length()];
+        FileInputStream fileInputStream = null;
+        try {
+            fileInputStream = new FileInputStream(scrFile);
+            fileInputStream.read(convertedScreen);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        scenario.embed(convertedScreen, "image/png");
+    }
+
+    private void createDir(String name) {
+        File dir = new File("./target/screenshots/" + name);
+        if (dir.exists() && dir.isDirectory()){
+            System.out.printf("ok");
+        } else {
+            dir.mkdirs();
         }
     }
+
+    private File takeScreenshot(String name) {
+        String path;
+        File source = null;
+        try {
+            source = driver.getScreenshotAs(OutputType.FILE);
+            path = "./target/screenshots/" + name + "/screen" + TimeNow() + ".png";
+            FileUtils.copyFile(source, new File(path));
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+
+        return source;
+    }
+
+    private String TimeNow(){
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        return sdf.format(cal.getTime());
+    }
+
 
     public static AppiumDriver getDriver(){
         return driver;
