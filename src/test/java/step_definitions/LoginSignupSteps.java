@@ -1,6 +1,5 @@
 package step_definitions;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -8,6 +7,8 @@ import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import support.TestBase;
+
+import static org.testng.AssertJUnit.assertTrue;
 
 /**
  * Created by idorovskikh on 1/9/16.
@@ -42,7 +43,7 @@ public class LoginSignupSteps extends TestBase {
     @And("^I verify user is logged in$")
     public void iVerifyUserIsLoggedIn(){
         Boolean isLogged = driver.findElement(By.name("user_list")).isEnabled();
-        Assert.assertTrue(isLogged);
+        assertTrue(isLogged);
     }
 
     @Then("^I tap on Signup button$")
@@ -53,7 +54,13 @@ public class LoginSignupSteps extends TestBase {
     @And("^I verified \"([^\"]*)\" message$")
     public void iVerifyThatNewUserHasBeenCreated(String error){
         Boolean isUserExists = driver.findElement(By.name(error)).isDisplayed();
-        Assert.assertTrue(isUserExists);
+        assertTrue(isUserExists);
         driver.findElement(By.name("OK")).click();
+    }
+
+    @And("^I verify that login is failed$")
+    public void iVerifyThatLoginIsFailed()  {
+        Boolean loginFailed = driver.findElement(By.name("Filed Login")).isDisplayed();
+        assertTrue(loginFailed);
     }
 }
