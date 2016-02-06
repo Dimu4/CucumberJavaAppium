@@ -5,7 +5,7 @@ Feature: Instagram login
   Scenario: Login as Igor
     When I tap on Login button
     Then I type "igor" into username field
-    And I type "password" into password field
+    And I type "password1" into password field
     Then I tap on Login button
     And I verify user is logged in
 
