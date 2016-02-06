@@ -22,6 +22,11 @@ Feature: Instagram login
 
   @wrongLogin
   Scenario: Login with wrong password
+    Given I tap on Login button
+    Then I type "igor" into username field
+    And I type "vsdfjnv" into password field
+    Then I tap on Login button
+    And I verify that login is failed
 
 
 

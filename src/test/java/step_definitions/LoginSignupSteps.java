@@ -41,4 +41,11 @@ public class LoginSignupSteps extends TestBase {
        Boolean result = driver.findElement(By.name("user_list")).isDisplayed();
        Assert.assertTrue(result);
     }
+
+    @And("^I verify that login is failed$")
+    public void iVerifyThatUserLoginisFailed(){
+        Boolean result = driver.findElement(By.name("Filed Login")).isDisplayed();
+        Assert.assertTrue(result);
+
+    }
 }
