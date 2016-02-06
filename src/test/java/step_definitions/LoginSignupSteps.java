@@ -48,4 +48,16 @@ public class LoginSignupSteps extends TestBase {
         Assert.assertTrue(result);
 
     }
+
+    @Then("^I tap on Signup button$")
+    public void iTapOnSignupButton()  {
+
+        driver.findElement(By.name("sign_up_btn")).click();
+    }
+
+    @And("^I verify that I singed up$")
+    public void iVerifyThatISingedUp()  {
+       Boolean result = driver.findElement(By.name("User List")).isDisplayed();
+        Assert.assertTrue(result);
+    }
 }
