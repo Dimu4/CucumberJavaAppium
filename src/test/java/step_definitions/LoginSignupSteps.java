@@ -1,5 +1,6 @@
 package step_definitions;
 
+import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -8,6 +9,8 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import support.TestBase;
 
+import java.util.Map;
+
 /**
  * Created by idorovskikh on 1/9/16.
  */
@@ -15,7 +18,9 @@ public class LoginSignupSteps extends TestBase {
 
     @Given("^I login to Instagram app$")
     public void iLoginToInstagramApp(){
-
+            iTapOnLoginButton();
+        iTypeIntoUsernameField("igor");
+        iTypeIntoPasswordField("password");
     }
 
     @When("^I tap on Login button$")
@@ -62,4 +67,17 @@ public class LoginSignupSteps extends TestBase {
     }
 
 
+    @Given("^I login to Instagram app with credentials:$")
+    public void iLoginToInstagramAppWithCredentials(DataTable datatable) {
+       Map<String, String> credentials = datatable.asMap(String.class, String.class);
+
+       String password = credentials.get("Password");
+        String username = credentials.get("Username");
+
+        iTapOnLoginButton();
+        iTypeIntoUsernameField(username);
+        iTypeIntoPasswordField(password);
+        iTapOnLoginButton();
+
+    }
 }
