@@ -38,7 +38,7 @@ TestHooks extends TestBase{
             embedScreenShot(scenario ,scrFile);
         }
 
-        driver.resetApp();
+        driver.closeApp();
     }
 
     private void embedScreenShot(Scenario scenario, File scrFile) {
