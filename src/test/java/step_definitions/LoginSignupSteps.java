@@ -62,16 +62,16 @@ public class LoginSignupSteps extends TestBase {
 
     @And("^I verify that I singed up$")
     public void iVerifyThatISingedUp()  {
-       Boolean result = driver.findElement(By.name("User List")).isDisplayed();
+        Boolean result = driver.findElement(By.name("User List")).isDisplayed();
         Assert.assertTrue(result);
     }
 
 
     @Given("^I login to Instagram app with credentials:$")
     public void iLoginToInstagramAppWithCredentials(DataTable datatable) {
-       Map<String, String> credentials = datatable.asMap(String.class, String.class);
 
-       String password = credentials.get("Password");
+        Map<String, String> credentials = datatable.asMap(String.class, String.class);
+        String password = credentials.get("Password");
         String username = credentials.get("Username");
 
         iTapOnLoginButton();
