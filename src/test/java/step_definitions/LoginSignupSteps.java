@@ -60,4 +60,6 @@ public class LoginSignupSteps extends TestBase {
        Boolean result = driver.findElement(By.name("User List")).isDisplayed();
         Assert.assertTrue(result);
     }
+
+
 }
