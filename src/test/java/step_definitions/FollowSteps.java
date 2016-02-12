@@ -3,6 +3,8 @@ package step_definitions;
 import cucumber.api.java.en.Then;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import support.TestBase;
 
 import static org.testng.Assert.assertTrue;
@@ -33,12 +35,19 @@ public class FollowSteps extends TestBase{
 
 
     @Then("^I verify that \"([^\"]*)\" is presented$")
-    public void iVerifyThatIsPresented(String arg0) {
+    public void iVerifyThatIsPresented(String elementName) {
         try {
-            WebElement element = driver.findElement(By.name("cell_1_following"));
+            WebElement element = driver.findElement(By.name(elementName));
             assertTrue(element.isDisplayed());
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Then("^I wait for \"([^\"]*)\" element$")
+    public void iWaitForElement(String arg0) throws Throwable {
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.name(arg0)));
+
     }
 }

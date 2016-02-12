@@ -7,6 +7,7 @@ Feature: Instagram user can follow a user from userlist
       |Password |  password   |
     Given I tap on "cell_1" button
     Then I make a swipe down gesture
-    Then I wait "3" sec
-    Then I verify that "" is presented
+    #Then I wait "3" sec
+    Then I wait for "cell_1_following" element
+    Then I verify that "cell_1_following" is presented
     
