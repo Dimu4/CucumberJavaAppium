@@ -12,15 +12,10 @@ Feature: Instagram user can post a new image from Library
     And I tap on "Camera Roll" button
     Then I select 1st image from Gallery
     And I verify post image screen
-    And I type "New Message" into message field
+#    And I type "New Message" into message field
     And I tap on "post_image" button
+#    And I verified "Post Image" message
     And I tap on "OK" button
-    Then I verify "Your image has been posted successfully!" in alert popup
-#   add parse setps via rest call
-#    Given I login to Instagram app with credentials:
-#      |Username |  alex       |
-#      |Password |  password   |
-#    Then I verify posted image "New Message" field
 
 
 
