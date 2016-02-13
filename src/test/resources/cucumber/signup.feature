@@ -1,5 +1,5 @@
 @signup
-Feature: Instagram signup
+Feature: Instagram signUp
 
   Scenario: As Instagram user, I can create new account
     Given I type "alfamiliya" into username field
