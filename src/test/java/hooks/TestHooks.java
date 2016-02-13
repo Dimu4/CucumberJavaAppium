@@ -25,6 +25,8 @@ TestHooks extends TestBase{
             CommonUtils.setIOSCapabilities();
             driver = CommonUtils.getIOSDriver();
         }
+
+
     }
 
     @After

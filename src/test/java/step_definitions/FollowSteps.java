@@ -1,6 +1,5 @@
 package step_definitions;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
@@ -23,7 +22,7 @@ public class FollowSteps extends TestBase{
         int starty = height / 5;
         int endx = width / 2;
         int endy = height / 4;
-        int duration = 100;
+        int duration = 500;
 
         driver.swipe(startx, starty, endx, endy, duration);
     }
@@ -31,7 +30,7 @@ public class FollowSteps extends TestBase{
     @Then("^I wait for \"([^\"]*)\" element$")
     public void iWaitForElement(String arg0) throws Throwable {
         WebDriverWait wait = new WebDriverWait(driver, 20);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.name(arg0));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.name(arg0)));
     }
 
     @Then("^I verify that \"([^\"]*)\" is presented$")
