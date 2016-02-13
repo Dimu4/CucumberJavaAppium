@@ -6,3 +6,5 @@ Feature: Instagram signup
     And I type "password" into password field
     Then I tap on Signup button
     And I verify that I singed up
+
+    ####
