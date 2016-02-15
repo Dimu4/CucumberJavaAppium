@@ -21,7 +21,7 @@ public class FollowSteps extends TestBase{
         int startx = width / 2;
         int starty = height / 5;
         int endx = width / 2;
-        int endy = height / 4;
+        int endy = height;
         int duration = 500;
 
         driver.swipe(startx, starty, endx, endy, duration);
