@@ -5,82 +5,67 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import pages.MainScreen;
+import pages.UserListScreen;
 import support.TestBase;
 
 import java.util.Map;
+
+import static org.testng.Assert.assertTrue;
 
 /**
  * Created by idorovskikh on 1/9/16.
  */
 public class LoginSignupSteps extends TestBase {
 
-    @Given("^I login to Instagram app$")
-    public void iLoginToInstagramApp(){
-
-    }
+    public MainScreen mainScreen = new MainScreen();
+    public UserListScreen userList = new UserListScreen();
 
     @When("^I tap on Login button$")
-    public void iTapOnLoginButton(){
-        driver.findElement(By.name("login_btn")).click();
-
+    public void iTapOnLoginButton() {
+        mainScreen.loginButton().click();
     }
 
-
     @Then("^I type \"([^\"]*)\" into username field$")
-    public void iTypeIntoUsernameField(String name)  {
-        driver.findElement(By.name("user_name")).sendKeys(name);
-
+    public void iTypeIntoUsernameField(String name) {
+        mainScreen.userName().sendKeys(name);
     }
 
     @And("^I type \"([^\"]*)\" into password field$")
-    public void iTypeIntoPasswordField(String password)  {
-        driver.findElement(By.name("password")).sendKeys(password);
+    public void iTypeIntoPasswordField(String password) {
+        mainScreen.password().sendKeys(password);
     }
 
     @And("^I verify user is logged in$")
-    public void iVerifyUserIsLoggedIn()  {
-       Boolean result = driver.findElement(By.name("user_list")).isDisplayed();
-       Assert.assertTrue(result);
+    public void iVerifyUserIsLoggedIn() {
+        assertTrue(userList.list().isDisplayed());
     }
 
     @And("^I verify that login is failed$")
-    public void iVerifyThatUserLoginisFailed(){
-        Boolean result = driver.findElement(By.name("Filed Login")).isDisplayed();
-        Assert.assertTrue(result);
-
+    public void iVerifyThatUserLoginisFailed() {
+        assertTrue(mainScreen.failedLogin().isDisplayed());
     }
 
     @Then("^I tap on Signup button$")
-    public void iTapOnSignupButton()  {
-
-        driver.findElement(By.name("sign_up_btn")).click();
+    public void iTapOnSignupButton() {
+        mainScreen.signUpButton().click();
     }
 
     @And("^I verify that I singed up$")
-    public void iVerifyThatISingedUp()  {
-       Boolean result = driver.findElement(By.name("User List")).isDisplayed();
-        Assert.assertTrue(result);
+    public void iVerifyThatISingedUp() {
+        assertTrue(userList.list().isDisplayed());
     }
 
     @Given("^I login to Instagram app with credentials:$")
-    public void iLoginToInstagramAppWithCredentials(DataTable datatable)  {
+    public void iLoginToInstagramAppWithCredentials(DataTable datatable) {
 
         Map<String, String> credentials = datatable.asMap(String.class, String.class);
-        String password = credentials.get("Password");
-        String username = credentials.get("Username");
 
         iTapOnLoginButton();
-        iTypeIntoUsernameField(username);
-        iTypeIntoPasswordField(password);
+        iTypeIntoUsernameField(credentials.get("Username"));
+        iTypeIntoPasswordField(credentials.get("Password"));
         iTapOnLoginButton();
     }
 
-    @Then("^I tap on \"([^\"]*)\" button$")
-    public void iTapOnButton(String elementName)  {
-       WebElement button = driver.findElement(By.name(elementName));
-        button.click();
-    }
+
 }

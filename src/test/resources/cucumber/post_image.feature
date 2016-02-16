@@ -5,15 +5,15 @@ Feature: Instagram user can post a new image from Library
     Given I login to Instagram app with credentials:
       |Username |  igor       |
       |Password |  password   |
-    Then I tap on "Post" button
+    Then I tap on post button
     And I verify post image screen
-    Then I tap on "choose_image" button
+    Then I tap on choose_image button
     And I tap on "OK" button
-    And I tap on "Camera Roll" button
+    And I tap on Camera Roll button
     Then I select 1st image from Gallery
     And I verify post image screen
-    And I tap on "post_image" button
-    And I tap on "OK" button
+    And I tap on post_image button
+    And I tap on OK button
 
 #   Homework: create new scenario for posting a picture with following steps
 

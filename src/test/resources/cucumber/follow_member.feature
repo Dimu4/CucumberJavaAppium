@@ -6,11 +6,14 @@ Feature: Instagram user can follow a user from userlist
       |Username |  igor       |
       |Password |  password   |
 
+
   Scenario: follow a user and check if following
-    Given I tap on "cell_1" button
+    Given I tap on username "alex"
     Then I make a swipe down gesture
     Then I wait for "cell_1_following" element
     Then I verify that "cell_1_following" is presented
+
+
 
   Scenario: unfollow scenario
       Given I tap on "cell_1_following" button

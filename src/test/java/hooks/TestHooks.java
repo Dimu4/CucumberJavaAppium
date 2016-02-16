@@ -25,6 +25,9 @@ TestHooks extends TestBase{
             CommonUtils.setIOSCapabilities();
             driver = CommonUtils.getIOSDriver();
         }
+        else {
+            driver.resetApp();
+        }
 
 
     }
@@ -40,7 +43,7 @@ TestHooks extends TestBase{
             embedScreenShot(scenario ,scrFile);
         }
 
-        driver.resetApp();
+        driver.closeApp();
     }
 
     private void embedScreenShot(Scenario scenario, File scrFile) {
