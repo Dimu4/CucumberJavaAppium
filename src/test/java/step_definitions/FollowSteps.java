@@ -1,7 +1,7 @@
 package step_definitions;
 
 import cucumber.api.java.en.Given;
-import pages.ScreenBase;
+import pages.iOS.ScreenBase;
 import support.TestBase;
 
 /**

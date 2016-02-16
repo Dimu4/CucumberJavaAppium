@@ -1,11 +1,11 @@
-package pages;
+package pages.iOS;
 
 import support.TestBase;
 
 /**
  * Created by abarabash on 2/16/16.
  */
-public class ScreenBase extends TestBase{
+public class ScreenBase extends TestBase {
 
     public CameraRollScreen cameraRollScreen;
     public PostImageScreen postImageScreen;

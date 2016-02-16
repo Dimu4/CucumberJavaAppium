@@ -5,8 +5,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import pages.MainScreen;
-import pages.UserListScreen;
+import pages.iOS.ScreenBase;
 import support.TestBase;
 
 import java.util.Map;
@@ -18,42 +17,41 @@ import static org.testng.Assert.assertTrue;
  */
 public class LoginSignupSteps extends TestBase {
 
-    public MainScreen mainScreen = new MainScreen();
-    public UserListScreen userList = new UserListScreen();
+    ScreenBase scr = new ScreenBase();
 
     @When("^I tap on Login button$")
     public void iTapOnLoginButton() {
-        mainScreen.loginButton().click();
+        scr.mainScreen.loginButton().click();
     }
 
     @Then("^I type \"([^\"]*)\" into username field$")
     public void iTypeIntoUsernameField(String name) {
-        mainScreen.userName().sendKeys(name);
+        scr.mainScreen.userName().sendKeys(name);
     }
 
     @And("^I type \"([^\"]*)\" into password field$")
     public void iTypeIntoPasswordField(String password) {
-        mainScreen.password().sendKeys(password);
+        scr.mainScreen.password().sendKeys(password);
     }
 
     @And("^I verify user is logged in$")
     public void iVerifyUserIsLoggedIn() {
-        assertTrue(userList.list().isDisplayed());
+        assertTrue(scr.userListScreen.list().isDisplayed());
     }
 
     @And("^I verify that login is failed$")
     public void iVerifyThatUserLoginisFailed() {
-        assertTrue(mainScreen.failedLogin().isDisplayed());
+        assertTrue(scr.mainScreen.failedLogin().isDisplayed());
     }
 
     @Then("^I tap on Signup button$")
     public void iTapOnSignupButton() {
-        mainScreen.signUpButton().click();
+        scr.mainScreen.signUpButton().click();
     }
 
     @And("^I verify that I singed up$")
     public void iVerifyThatISingedUp() {
-        assertTrue(userList.list().isDisplayed());
+        assertTrue(scr.userListScreen.list().isDisplayed());
     }
 
     @Given("^I login to Instagram app with credentials:$")
