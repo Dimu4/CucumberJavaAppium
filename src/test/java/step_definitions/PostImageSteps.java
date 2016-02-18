@@ -2,7 +2,6 @@ package step_definitions;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
-import pages.iOS.ScreenBase;
 import support.TestBase;
 
 import static org.testng.Assert.assertTrue;
@@ -12,9 +11,6 @@ import static org.testng.Assert.assertTrue;
  */
 
 public class PostImageSteps extends TestBase {
-
-    ScreenBase scr = new ScreenBase();
-
 
     @And("^I verify post image screen$")
     public void iVerifyPostImageScreen() throws Throwable {
