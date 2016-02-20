@@ -1,6 +1,7 @@
 @post
 Feature: Instagram user can post a new image from Library
 
+  @postUI
   Scenario: As Instagram user, I can post a new image
     Given I login to Instagram app with credentials:
       |Username |  igor       |
@@ -14,6 +15,18 @@ Feature: Instagram user can post a new image from Library
     And I verify post image screen
     And I tap on post_image button
     And I tap on OK button
+
+ @postAPI
+  Scenario: create user, login, post image, verify image posted
+    Given create a user using API request with "user.json"
+    Then saving userId
+    Then login to Instagram app as new user
+    Then post image via UI
+    Then make a get request to obtain posts
+    Then verify that image is posted
+    Then delete user via API request
+
+
 
 #   Homework: create new scenario for posting a picture with following steps
 

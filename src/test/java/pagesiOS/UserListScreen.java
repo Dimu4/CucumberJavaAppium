@@ -1,4 +1,4 @@
-package pages.iOS;
+package pagesiOS;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

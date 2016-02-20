@@ -5,8 +5,8 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 
 //@RunWith(Cucumber.class)
 @CucumberOptions(
-        tags = "@login",
-        glue = {"step_definitions","hooks", "support"},
+        tags = "@postAPI",
+        glue = {"step_definitions", "hooks", "pagesiOS", "support"},
         features = {
                 "classpath:cucumber"
         },

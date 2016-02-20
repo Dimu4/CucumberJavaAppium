@@ -6,7 +6,7 @@ import hooks.TestHooks;
 import io.appium.java_client.AppiumDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-import pages.iOS.ScreenBase;
+import pagesiOS.ScreenBase;
 
 
 public class TestBase {

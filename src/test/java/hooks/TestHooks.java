@@ -23,7 +23,7 @@ TestHooks extends TestBase{
     public void startDriver(Scenario scenario) throws Exception {
         if (driver == null) {
             CommonUtils.setIOSCapabilities();
-            driver = CommonUtils.getIOSDriver();
+          driver = CommonUtils.getIOSDriver();
         }
         else {
             driver.resetApp();

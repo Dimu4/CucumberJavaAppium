@@ -1,4 +1,4 @@
-package pages.iOS;
+package pagesiOS;
 
 import support.TestBase;
 

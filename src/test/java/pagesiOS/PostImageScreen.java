@@ -1,4 +1,4 @@
-package pages.iOS;
+package pagesiOS;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -23,5 +23,9 @@ public class PostImageScreen extends TestBase {
 
     public WebElement okButton() {
         return driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]"));
+    }
+
+    public WebElement messageField() {
+        return driver.findElement(By.name("message_field"));
     }
 }

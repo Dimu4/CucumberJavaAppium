@@ -45,7 +45,7 @@ public class Common extends TestBase{
     }
 
     @Then("^I tap on \"([^\"]*)\" button$")
-    public void iTapOnButton(String elementName)  {
+    public static void iTapOnButton(String elementName)  {
         WebElement button = driver.findElement(By.name(elementName));
         button.click();
     }

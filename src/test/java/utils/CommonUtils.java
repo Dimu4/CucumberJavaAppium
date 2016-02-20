@@ -6,7 +6,6 @@ import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -26,7 +25,7 @@ public class CommonUtils {
 
 
     public static void setIOSCapabilities() throws IOException {
-        FileInputStream file = new FileInputStream(System.getProperty("user.dir")+"/src/test/resources/properties/" + loadPropertyFile);
+        FileInputStream file = new FileInputStream(System.getProperty("user.dir") + "/src/test/resources/properties/" + loadPropertyFile);
         prop.load(file);
         APPIUM_PORT = prop.getProperty("appium.server.port");
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION,

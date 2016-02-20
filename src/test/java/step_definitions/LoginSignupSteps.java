@@ -19,17 +19,17 @@ public class LoginSignupSteps extends TestBase {
 
 
     @When("^I tap on Login button$")
-    public void iTapOnLoginButton() {
+    public static void iTapOnLoginButton() {
         scr.mainScreen.loginButton().click();
     }
 
     @Then("^I type \"([^\"]*)\" into username field$")
-    public void iTypeIntoUsernameField(String name) {
+    public static void iTypeIntoUsernameField(String name) {
         scr.mainScreen.userName().sendKeys(name);
     }
 
     @And("^I type \"([^\"]*)\" into password field$")
-    public void iTypeIntoPasswordField(String password) {
+    public static void iTypeIntoPasswordField(String password) {
         scr.mainScreen.password().sendKeys(password);
     }
 
