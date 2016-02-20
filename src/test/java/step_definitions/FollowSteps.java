@@ -44,12 +44,12 @@ public class FollowSteps extends TestBase{
         Assert.assertTrue(result);
     }
 
-    @Given("^I tap on cell_(\\d+) button$")
+    @Given("^I tap on cell1 button$")
     public void iTapOnCell_Button(int arg0)  {
         scr.userListScreen.cell_1().click();
     }
 
-    @Then("^I wait for cell_(\\d+)_following element$")
+    @Then("^I wait for cellfollowing element$")
     public void iWaitForCell__followingElement(int arg0)  {
 
         WebElement cell1 = scr.userListScreen.cell1Following();
