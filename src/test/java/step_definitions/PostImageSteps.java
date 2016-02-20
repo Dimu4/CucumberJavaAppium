@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import support.TestBase;
 
 /**
- * Created by abarabash on 2/13/16.
+ * **Created by abarabash on 2/13/16.
  */
 public class PostImageSteps extends TestBase {
     @And("^I verify post image screen$")
