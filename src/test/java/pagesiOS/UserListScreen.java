@@ -17,7 +17,11 @@ public class UserListScreen extends TestBase {
         return driver.findElement(By.name("User List"));
     }
 
+    public WebElement cell_1() {
+        return driver.findElement(By.name("cell_1"));
+    }
 
-
-
+    public WebElement cell1Following() {
+        return driver.findElement(By.name("cell_1_following"));
+    }
 }
