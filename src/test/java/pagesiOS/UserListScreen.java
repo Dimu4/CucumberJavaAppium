@@ -13,6 +13,10 @@ public class UserListScreen extends TestBase {
        return driver.findElement(By.name("user_list"));
    }
 
+    public WebElement userListText() {
+        return driver.findElement(By.name("User List"));
+    }
+
 
 
 

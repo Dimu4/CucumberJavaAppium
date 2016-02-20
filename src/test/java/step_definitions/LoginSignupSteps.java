@@ -58,7 +58,7 @@ public class LoginSignupSteps extends TestBase {
 
     @And("^I verify that I singed up$")
     public void iVerifyThatISingedUp()  {
-       Boolean result = driver.findElement(By.name("User List")).isDisplayed();
+       Boolean result = scr.userListScreen.userListText().isDisplayed();
         Assert.assertTrue(result);
     }
 

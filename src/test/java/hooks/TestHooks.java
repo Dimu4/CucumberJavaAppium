@@ -18,15 +18,15 @@ import java.util.Calendar;
 public class
 TestHooks extends TestBase{
 
-
     @Before
     public void startDriver(Scenario scenario) throws Exception {
         if (driver == null) {
             CommonUtils.setIOSCapabilities();
             driver = CommonUtils.getIOSDriver();
         }
-
-
+        else {
+            driver.resetApp();
+        }
     }
 
     @After
@@ -40,7 +40,7 @@ TestHooks extends TestBase{
             embedScreenShot(scenario ,scrFile);
         }
 
-        driver.resetApp();
+        driver.closeApp();
     }
 
     private void embedScreenShot(Scenario scenario, File scrFile) {
