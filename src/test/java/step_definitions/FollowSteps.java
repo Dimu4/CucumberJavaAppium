@@ -45,12 +45,12 @@ public class FollowSteps extends TestBase{
     }
 
     @Given("^I tap on cell1 button$")
-    public void iTapOnCell_Button(int arg0)  {
+    public void iTapOnCell_Button()  {
         scr.userListScreen.cell_1().click();
     }
 
     @Then("^I wait for cellfollowing element$")
-    public void iWaitForCell__followingElement(int arg0)  {
+    public void iWaitForCell__followingElement()  {
 
         WebElement cell1 = scr.userListScreen.cell1Following();
         WebDriverWait wait = new WebDriverWait(driver, 20);
@@ -58,7 +58,7 @@ public class FollowSteps extends TestBase{
     }
 
     @Then("^I verify that cellfollowing is presented$")
-    public void iVerifyThatCellFollowingIsPresented(int arg0)  {
+    public void iVerifyThatCellFollowingIsPresented()  {
         assertTrue(scr.userListScreen.cell1Following().isDisplayed());
     }
 }

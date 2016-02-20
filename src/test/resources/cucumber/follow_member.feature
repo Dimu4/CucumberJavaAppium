@@ -6,6 +6,7 @@ Feature: Instagram user can follow a user from userlist
       |Username |  igor       |
       |Password |  password   |
 
+  @followOne
   Scenario: follow a user and check if following
     Given I tap on cell1 button
     Then I make a swipe down gesture
