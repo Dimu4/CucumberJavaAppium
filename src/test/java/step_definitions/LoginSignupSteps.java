@@ -24,39 +24,36 @@ public class LoginSignupSteps extends TestBase {
 
     @When("^I tap on Login button$")
     public void iTapOnLoginButton(){
-        driver.findElement(By.name("login_btn")).click();
-
+        scr.mainScreen.loginButton().click();
     }
 
 
     @Then("^I type \"([^\"]*)\" into username field$")
     public void iTypeIntoUsernameField(String name)  {
-        driver.findElement(By.name("user_name")).sendKeys(name);
+        scr.mainScreen.userName().sendKeys(name);
 
     }
 
     @And("^I type \"([^\"]*)\" into password field$")
     public void iTypeIntoPasswordField(String password)  {
-        driver.findElement(By.name("password")).sendKeys(password);
+        scr.mainScreen.password().sendKeys(password);
     }
 
     @And("^I verify user is logged in$")
     public void iVerifyUserIsLoggedIn()  {
-       Boolean result = driver.findElement(By.name("user_list")).isDisplayed();
+       Boolean result = scr.userListScreen.userList().isDisplayed();
        Assert.assertTrue(result);
     }
 
     @And("^I verify that login is failed$")
     public void iVerifyThatUserLoginisFailed(){
-        Boolean result = driver.findElement(By.name("Filed Login")).isDisplayed();
+        Boolean result = scr.mainScreen.loginAlert().isDisplayed();
         Assert.assertTrue(result);
-
     }
 
     @Then("^I tap on Signup button$")
     public void iTapOnSignupButton()  {
-
-        driver.findElement(By.name("sign_up_btn")).click();
+        scr.mainScreen.signUpButton().click();
     }
 
     @And("^I verify that I singed up$")
