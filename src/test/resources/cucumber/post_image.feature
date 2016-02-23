@@ -1,6 +1,7 @@
-@post
+@post @iOS @android
 Feature: Instagram user can post a new image from Library
 
+  @postUI
   Scenario: As Instagram user, I can post a new image
     Given I login to Instagram app with credentials:
       |Username |  igor       |

@@ -18,11 +18,22 @@ import java.util.Calendar;
 public class
 TestHooks extends TestBase{
 
-    @Before
-    public void startDriver(Scenario scenario) throws Exception {
+    @Before("@ios")
+    public void startiOSDriver() throws IOException {
         if (driver == null) {
             CommonUtils.setIOSCapabilities();
             driver = CommonUtils.getIOSDriver();
+        }
+        else {
+            driver.resetApp();
+        }
+    }
+
+    @Before("@android")
+    public void startAndroidDriver() throws IOException {
+        if (driver == null) {
+            CommonUtils.setAndroidCapabilities();
+            driver = CommonUtils.getAndroidDriver();
         }
         else {
             driver.resetApp();

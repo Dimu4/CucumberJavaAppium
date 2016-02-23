@@ -1,12 +1,12 @@
 package utils;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -22,11 +22,9 @@ public class CommonUtils {
     private static DesiredCapabilities capabilities = new DesiredCapabilities();
     private static URL serverUrl;
     private static AppiumDriver driver;
-    public static String loadPropertyFile = "iOS.properties";
-
 
     public static void setIOSCapabilities() throws IOException {
-        FileInputStream file = new FileInputStream(System.getProperty("user.dir")+"/src/test/resources/properties/" + loadPropertyFile);
+        FileInputStream file = new FileInputStream(System.getProperty("user.dir")+"/src/test/resources/properties/iOS.properties");
         prop.load(file);
         APPIUM_PORT = prop.getProperty("appium.server.port");
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION,
@@ -46,9 +44,58 @@ public class CommonUtils {
                 System.getProperty("user.dir") + prop.getProperty("application.path"));
     }
 
+    public static void setAndroidCapabilities() throws IOException {
+        FileInputStream file = new FileInputStream(System.getProperty("user.dir")+ "/src/test/resources/properties/android.properties");
+
+        prop.load(file);
+        APPIUM_PORT = prop.getProperty("appium.server.port");
+
+        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME,
+                prop.getProperty("device.name"));
+
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME,
+                prop.getProperty("platform.name"));
+
+        capabilities.setCapability(MobileCapabilityType.APP_ACTIVITY,
+                prop.getProperty("app.activity"));
+
+        capabilities.setCapability(MobileCapabilityType.APP_PACKAGE,
+                prop.getProperty("app.pkg"));
+
+        capabilities.setCapability(MobileCapabilityType.APP,
+                System.getProperty("user.dir") + prop.getProperty("application.path"));
+
+
+        /*
+
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION,
+                prop.getProperty("platform.version"));
+
+        capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT,
+                Integer.valueOf(prop.getProperty("new.command.timeout")));
+
+        capabilities.setCapability(MobileCapabilityType.DEVICE_READY_TIMEOUT,
+                prop.getProperty("device.ready.timeout"));
+
+        capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME,
+                prop.getProperty("automation.name"));
+
+           */
+
+
+    }
+
+
     public static AppiumDriver getIOSDriver() throws MalformedURLException {
         serverUrl = new URL("http://localhost:" + APPIUM_PORT + "/wd/hub");
         driver = new IOSDriver(serverUrl, capabilities);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        return driver;
+    }
+
+    public static AppiumDriver getAndroidDriver() throws MalformedURLException {
+        serverUrl = new URL("http://localhost:" + APPIUM_PORT + "/wd/hub");
+        driver = new AndroidDriver(serverUrl, capabilities);
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         return driver;
     }
