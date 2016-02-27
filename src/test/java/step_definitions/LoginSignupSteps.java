@@ -44,9 +44,10 @@ public class LoginSignupSteps extends TestBase {
     }
 
     @Then("^I tap on Signup button$")
-    public void iTapOnSignupButton() {
-        scr.mainScreen.signUpButton().click();
+    public void iTapOnSignupButton() { scr.mainScreen.signUpButton().click();
     }
+
+
 
     @And("^I verify that I singed up$")
     public void iVerifyThatISingedUp() {

@@ -51,4 +51,5 @@ public class CommonUtils {
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         return driver;
     }
+
 }
