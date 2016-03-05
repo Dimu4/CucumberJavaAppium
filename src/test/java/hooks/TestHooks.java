@@ -19,17 +19,27 @@ public class
 TestHooks extends TestBase{
 
 
-    @Before
+    @Before("@ios")
     public void startDriver(Scenario scenario) throws Exception {
         if (driver == null) {
             CommonUtils.setIOSCapabilities();
-          driver = CommonUtils.getIOSDriver();
+          driver = CommonUtils.createIOSDriver();
         }
         else {
             driver.resetApp();
         }
 
+    }
 
+    @Before("@android")
+    public void startAndroidDriver() throws IOException {
+        if (driver == null) {
+            CommonUtils.setAndroidCapabilities();
+            driver = CommonUtils.createAndroidDriver();
+        }
+        else {
+            driver.resetApp();
+        }
     }
 
     @After
