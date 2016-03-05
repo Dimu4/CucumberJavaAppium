@@ -6,7 +6,6 @@ import cucumber.api.java.Before;
 import io.appium.java_client.AppiumDriver;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
-import pagesiOS.ScreenBase;
 import support.TestBase;
 import utils.CommonUtils;
 
@@ -19,15 +18,13 @@ import java.util.Calendar;
 public class
 TestHooks extends TestBase{
 
-
-    @Before
+    @Before("@ios")
     public void startIOSDriver() throws Exception {
         if (driver == null) {
             CommonUtils.setIOSCapabilities();
             driver = CommonUtils.createIOSDriver();
 
-            System.out.println("ScreenBase constructor starting....");
-            scr = new ScreenBase();
+            scr.initialize();
 
         }
         else {
@@ -36,11 +33,14 @@ TestHooks extends TestBase{
 
     }
 
-    //@Before
+   @Before("@android")
     public void startAndroidDriver() throws IOException {
         if (driver == null) {
+
             CommonUtils.setAndroidCapabilities();
             driver = CommonUtils.createAndroidDriver();
+
+            scr.initialize();
         }
         else {
             driver.closeApp();

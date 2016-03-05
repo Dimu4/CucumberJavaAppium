@@ -19,6 +19,8 @@ public class TestBase {
 		System.out.println("Starting Appium driver.....");
 		driver = TestHooks.getDriver();
 
+		System.out.println("ScreenBase constructor starting....");
+		scr = new ScreenBase();
 
 
 	}

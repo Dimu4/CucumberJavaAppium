@@ -16,12 +16,16 @@ public class ScreenBase extends TestBase {
     public ScreenBase(){
 
         System.out.println("ScreenBase constructor executing...");
+
+
+    }
+
+    public void initialize(){
         cameraRollScreen = new CameraRollScreen();
         postImageScreen = new PostImageScreen();
         mainScreen = new MainScreen();
         userListScreen = new UserListScreen();
         photos = new PhotosScreen();
-
     }
 
 }

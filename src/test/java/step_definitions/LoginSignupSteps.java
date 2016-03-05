@@ -19,7 +19,6 @@ public class LoginSignupSteps extends TestBase {
     @When("^I tap on Login button$")
     public static void iTapOnLoginButton() {
 
-
         scr.mainScreen.loginButton.click();
     }
 

@@ -20,15 +20,15 @@ public class MainScreen extends TestBase{
         PageFactory.initElements(new AppiumFieldDecorator(driver, 20, TimeUnit.SECONDS), this);
     }
 
-    @AndroidFindBy(name = "login_btn")
+    @AndroidFindBy(id = "changeSignUpMode")
     @iOSFindBy(name = "login_btn")
     public MobileElement loginButton;
 
-    @AndroidFindBy(name = "user_name")
+    @AndroidFindBy(id = "username")
     @iOSFindBy(name = "user_name")
     public MobileElement userName;
 
-    @AndroidFindBy(name = "password")
+    @AndroidFindBy(id = "password")
     @iOSFindBy(name = "password")
     public MobileElement password;
 
@@ -36,7 +36,7 @@ public class MainScreen extends TestBase{
     @iOSFindBy(name = "Failed Login")
     public MobileElement failedLogin;
 
-    @AndroidFindBy(name = "sign_up_btn")
+    @AndroidFindBy(name = "signUpButton")
     @iOSFindBy(name = "sign_up_btn")
     public MobileElement signUpButton;
 }
