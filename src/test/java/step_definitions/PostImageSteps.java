@@ -25,7 +25,7 @@ public class PostImageSteps extends TestBase {
 
     @Then("^I tap on post button$")
     public void iTapOnPostButton()  {
-        scr.userListScreen.postButton().click();
+        scr.userListScreen.postButton.click();
     }
 
     @Then("^I tap on choose_image button$")
