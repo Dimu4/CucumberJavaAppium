@@ -19,6 +19,7 @@ public class UserListScreen extends TestBase {
     @AndroidFindBy(id = "userList")
     @iOSFindBy(name = "user_list")
     public MobileElement list;
+
     @AndroidFindBy(id = "share")
     @iOSFindBy(name = "Post")
     public MobileElement postButton;

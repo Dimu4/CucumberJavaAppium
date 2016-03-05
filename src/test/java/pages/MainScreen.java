@@ -14,18 +14,22 @@ import java.util.concurrent.TimeUnit;
  */
 public class MainScreen extends TestBase{
 
-    @AndroidFindBy(id = "changeSignUpMode")
+    @AndroidFindBy(name = "Log In")
     @iOSFindBy(name = "login_btn")
     public MobileElement loginButton;
+
     @AndroidFindBy(id = "username")
     @iOSFindBy(name = "user_name")
     public MobileElement userName;
+
     @AndroidFindBy(id = "password")
     @iOSFindBy(name = "password")
     public MobileElement password;
+
     @AndroidFindBy(name = "Failed Login")
     @iOSFindBy(name = "Failed Login")
     public MobileElement failedLogin;
+
     @AndroidFindBy(name = "signUpButton")
     @iOSFindBy(name = "sign_up_btn")
     public MobileElement signUpButton;
