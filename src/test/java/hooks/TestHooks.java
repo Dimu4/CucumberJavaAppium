@@ -6,6 +6,7 @@ import cucumber.api.java.Before;
 import io.appium.java_client.AppiumDriver;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
+import pagesiOS.ScreenBase;
 import support.TestBase;
 import utils.CommonUtils;
 
@@ -19,11 +20,15 @@ public class
 TestHooks extends TestBase{
 
 
-    @Before("@ios")
-    public void startDriver(Scenario scenario) throws Exception {
+    @Before
+    public void startIOSDriver() throws Exception {
         if (driver == null) {
             CommonUtils.setIOSCapabilities();
-          driver = CommonUtils.createIOSDriver();
+            driver = CommonUtils.createIOSDriver();
+
+            System.out.println("ScreenBase constructor starting....");
+            scr = new ScreenBase();
+
         }
         else {
             driver.resetApp();
@@ -31,14 +36,14 @@ TestHooks extends TestBase{
 
     }
 
-    @Before("@android")
+    //@Before
     public void startAndroidDriver() throws IOException {
         if (driver == null) {
             CommonUtils.setAndroidCapabilities();
             driver = CommonUtils.createAndroidDriver();
         }
         else {
-            driver.resetApp();
+            driver.closeApp();
         }
     }
 

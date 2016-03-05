@@ -1,32 +1,42 @@
 package pagesiOS;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.pagefactory.iOSFindBy;
+import org.openqa.selenium.support.PageFactory;
 import support.TestBase;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by abarabash on 2/16/16.
  */
 public class MainScreen extends TestBase{
 
-    public WebElement loginButton(){
-      return driver.findElement(By.name("login_btn"));
+    public MainScreen(){
+
+        System.out.println("Initializing MainScreen elements....");
+        PageFactory.initElements(new AppiumFieldDecorator(driver, 20, TimeUnit.SECONDS), this);
     }
 
-    public WebElement userName() {
-       return driver.findElement(By.name("user_name"));
-    }
+    @AndroidFindBy(name = "login_btn")
+    @iOSFindBy(name = "login_btn")
+    public MobileElement loginButton;
 
-    public WebElement password() {
-      return driver.findElement(By.name("password"));
-    }
+    @AndroidFindBy(name = "user_name")
+    @iOSFindBy(name = "user_name")
+    public MobileElement userName;
 
-    public WebElement failedLogin() {
-        return driver.findElement(By.name("Failed Login"));
-    }
+    @AndroidFindBy(name = "password")
+    @iOSFindBy(name = "password")
+    public MobileElement password;
 
-    public WebElement signUpButton() {
+    @AndroidFindBy(name = "Failed Login")
+    @iOSFindBy(name = "Failed Login")
+    public MobileElement failedLogin;
 
-        return driver.findElement(By.name("sign_up_btn"));
-    }
+    @AndroidFindBy(name = "sign_up_btn")
+    @iOSFindBy(name = "sign_up_btn")
+    public MobileElement signUpButton;
 }

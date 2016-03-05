@@ -70,15 +70,19 @@ public class CommonUtils {
 
     public static AppiumDriver createIOSDriver() throws MalformedURLException {
         serverUrl = new URL("http://localhost:" + APPIUM_PORT + "/wd/hub");
+
+        System.out.println("Creating iOS driver...");
         driver = new IOSDriver(serverUrl, capabilities);
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         return driver;
     }
 
     public static AppiumDriver createAndroidDriver() throws MalformedURLException {
         serverUrl = new URL("http://localhost:" + APPIUM_PORT + "/wd/hub");
+
+        System.out.println("Creating Android driver...");
         driver = new AndroidDriver(serverUrl, capabilities);
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+
         return driver;
     }
 
