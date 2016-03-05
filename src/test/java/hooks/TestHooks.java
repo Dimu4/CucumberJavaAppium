@@ -14,21 +14,40 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Properties;
 
 public class
 TestHooks extends TestBase{
 
 
+
     @Before
-    public void startDriver(Scenario scenario) throws Exception {
+    public void startDriver() throws Exception {
+
+        Properties prop = new Properties();
+
+        FileInputStream file = new FileInputStream(System.getProperty("user.dir") + "/src/test/resources/properties/platform.properties");
+        prop.load(file);
+
+        String platform = prop.getProperty("platform");
+
         if (driver == null) {
-            CommonUtils.setIOSCapabilities();
-          driver = CommonUtils.getIOSDriver();
+
+            if (platform.equals("iOS")) {
+                CommonUtils.setIOSCapabilities();
+                driver = CommonUtils.createIOSDriver();
+            }
+            if (platform.equals("Android")) {
+                CommonUtils.setAndroidCapabilities();
+                driver = CommonUtils.createAndroidDriver();
+            }
+
+            scr.initialize();
+
         }
         else {
             driver.resetApp();
         }
-
 
     }
 

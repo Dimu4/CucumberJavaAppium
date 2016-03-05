@@ -20,17 +20,17 @@ public class LoginSignupSteps extends TestBase {
 
     @When("^I tap on Login button$")
     public static void iTapOnLoginButton() {
-        scr.mainScreen.loginButton().click();
+        scr.mainScreen.loginButton.click();
     }
 
     @Then("^I type \"([^\"]*)\" into username field$")
     public static void iTypeIntoUsernameField(String name) {
-        scr.mainScreen.userName().sendKeys(name);
+        scr.mainScreen.userName.sendKeys(name);
     }
 
     @And("^I type \"([^\"]*)\" into password field$")
     public static void iTypeIntoPasswordField(String password) {
-        scr.mainScreen.password().sendKeys(password);
+        scr.mainScreen.password.sendKeys(password);
     }
 
     @And("^I verify user is logged in$")
@@ -38,15 +38,15 @@ public class LoginSignupSteps extends TestBase {
         assertTrue(scr.userListScreen.list().isDisplayed());
     }
 
-    @And("^I verify that login is failed$")
-    public void iVerifyThatUserLoginisFailed() {
-        assertTrue(scr.mainScreen.failedLogin().isDisplayed());
-    }
+//    @And("^I verify that login is failed$")
+//    public void iVerifyThatUserLoginisFailed() {
+//        assertTrue(scr.mainScreen.failedLogin().isDisplayed());
+//    }
 
-    @Then("^I tap on Signup button$")
-    public void iTapOnSignupButton() {
-        scr.mainScreen.signUpButton().click();
-    }
+//    @Then("^I tap on Signup button$")
+//    public void iTapOnSignupButton() {
+//        scr.mainScreen.signUpButton().click();
+//    }
 
     @And("^I verify that I singed up$")
     public void iVerifyThatISingedUp() {

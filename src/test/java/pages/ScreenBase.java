@@ -1,4 +1,4 @@
-package pagesiOS;
+package pages;
 
 import support.TestBase;
 
@@ -14,12 +14,15 @@ public class ScreenBase extends TestBase {
     public PhotosScreen photos;
 
     public ScreenBase(){
+
+    }
+
+    public void initialize(){
         cameraRollScreen = new CameraRollScreen();
         postImageScreen = new PostImageScreen();
         mainScreen = new MainScreen();
         userListScreen = new UserListScreen();
         photos = new PhotosScreen();
-
     }
 
 }
