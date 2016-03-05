@@ -1,7 +1,7 @@
-@login
+
 Feature: Instagram login
 
-  @oneLogin @ios @android
+  @login
   Scenario: Login as Igor
     When I tap on Login button
     Then I type "igor" into username field

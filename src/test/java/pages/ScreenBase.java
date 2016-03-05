@@ -1,4 +1,4 @@
-package pagesiOS;
+package pages;
 
 import support.TestBase;
 
@@ -16,8 +16,6 @@ public class ScreenBase extends TestBase {
     public ScreenBase(){
 
         System.out.println("ScreenBase constructor executing...");
-
-
     }
 
     public void initialize(){

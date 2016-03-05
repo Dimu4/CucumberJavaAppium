@@ -14,15 +14,35 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Properties;
 
 public class
 TestHooks extends TestBase{
 
-    @Before("@ios")
-    public void startIOSDriver() throws Exception {
+    public static AppiumDriver getDriver() {
+        return driver;
+    }
+
+    @Before
+    public void startDriver() throws Exception {
+
+        Properties prop = new Properties();
+
+        FileInputStream file = new FileInputStream(System.getProperty("user.dir") + "/src/test/resources/properties/platform.properties");
+        prop.load(file);
+
+        String platform = prop.getProperty("platform");
+
         if (driver == null) {
-            CommonUtils.setIOSCapabilities();
-            driver = CommonUtils.createIOSDriver();
+
+            if (platform.equals("iOS")) {
+                CommonUtils.setIOSCapabilities();
+                driver = CommonUtils.createIOSDriver();
+            }
+            if (platform.equals("Android")) {
+                CommonUtils.setAndroidCapabilities();
+                driver = CommonUtils.createAndroidDriver();
+            }
 
             scr.initialize();
 
@@ -31,20 +51,6 @@ TestHooks extends TestBase{
             driver.resetApp();
         }
 
-    }
-
-   @Before("@android")
-    public void startAndroidDriver() throws IOException {
-        if (driver == null) {
-
-            CommonUtils.setAndroidCapabilities();
-            driver = CommonUtils.createAndroidDriver();
-
-            scr.initialize();
-        }
-        else {
-            driver.closeApp();
-        }
     }
 
     @After
@@ -102,10 +108,5 @@ TestHooks extends TestBase{
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
         return sdf.format(cal.getTime());
-    }
-
-
-    public static AppiumDriver getDriver(){
-        return driver;
     }
 }

@@ -1,4 +1,4 @@
-package pagesiOS;
+package pages;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -14,29 +14,25 @@ import java.util.concurrent.TimeUnit;
  */
 public class MainScreen extends TestBase{
 
-    public MainScreen(){
+    @AndroidFindBy(id = "changeSignUpMode")
+    @iOSFindBy(name = "login_btn")
+    public MobileElement loginButton;
+    @AndroidFindBy(id = "username")
+    @iOSFindBy(name = "user_name")
+    public MobileElement userName;
+    @AndroidFindBy(id = "password")
+    @iOSFindBy(name = "password")
+    public MobileElement password;
+    @AndroidFindBy(name = "Failed Login")
+    @iOSFindBy(name = "Failed Login")
+    public MobileElement failedLogin;
+    @AndroidFindBy(name = "signUpButton")
+    @iOSFindBy(name = "sign_up_btn")
+    public MobileElement signUpButton;
+
+    public MainScreen() {
 
         System.out.println("Initializing MainScreen elements....");
         PageFactory.initElements(new AppiumFieldDecorator(driver, 20, TimeUnit.SECONDS), this);
     }
-
-    @AndroidFindBy(id = "changeSignUpMode")
-    @iOSFindBy(name = "login_btn")
-    public MobileElement loginButton;
-
-    @AndroidFindBy(id = "username")
-    @iOSFindBy(name = "user_name")
-    public MobileElement userName;
-
-    @AndroidFindBy(id = "password")
-    @iOSFindBy(name = "password")
-    public MobileElement password;
-
-    @AndroidFindBy(name = "Failed Login")
-    @iOSFindBy(name = "Failed Login")
-    public MobileElement failedLogin;
-
-    @AndroidFindBy(name = "signUpButton")
-    @iOSFindBy(name = "sign_up_btn")
-    public MobileElement signUpButton;
 }
