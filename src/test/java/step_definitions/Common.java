@@ -13,6 +13,12 @@ import support.TestBase;
  */
 public class Common extends TestBase{
 
+    @Then("^I tap on \"([^\"]*)\" button$")
+    public static void iTapOnButton(String elementName) {
+        WebElement button = driver.findElement(By.name(elementName));
+        button.click();
+    }
+
     @Then("^I make a swipe down gesture$")
     public void iMakeASwipeDownGesture()  {
 
@@ -32,8 +38,6 @@ public class Common extends TestBase{
     public void iWaitForElement(String arg0) throws Throwable {
         WebDriverWait wait = new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.name(arg0)));
-
-
     }
 
     @Then("^I verify that \"([^\"]*)\" is presented$")
@@ -42,11 +46,5 @@ public class Common extends TestBase{
         Boolean result = element.isDisplayed();
 
         Assert.assertTrue(result);
-    }
-
-    @Then("^I tap on \"([^\"]*)\" button$")
-    public static void iTapOnButton(String elementName)  {
-        WebElement button = driver.findElement(By.name(elementName));
-        button.click();
     }
 }
