@@ -37,8 +37,8 @@ public class MainScreen extends TestBase{
 //        return driver.findElement(By.name("Failed Login"));
 //    }
 
-//    public WebElement signUpButton() {
-//
-//        return driver.findElement(By.name("sign_up_btn"));
-//    }
+    @AndroidFindBy(id = "signUpButton")
+    @iOSFindBy(name = "sign_up_btn")
+    public MobileElement signUpButton;
+
 }

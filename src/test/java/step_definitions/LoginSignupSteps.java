@@ -35,7 +35,7 @@ public class LoginSignupSteps extends TestBase {
 
     @And("^I verify user is logged in$")
     public void iVerifyUserIsLoggedIn() {
-        assertTrue(scr.userListScreen.list().isDisplayed());
+        assertTrue(scr.userListScreen.list.isDisplayed());
     }
 
 //    @And("^I verify that login is failed$")
@@ -43,14 +43,14 @@ public class LoginSignupSteps extends TestBase {
 //        assertTrue(scr.mainScreen.failedLogin().isDisplayed());
 //    }
 
-//    @Then("^I tap on Signup button$")
-//    public void iTapOnSignupButton() {
-//        scr.mainScreen.signUpButton().click();
-//    }
+    @Then("^I tap on Signup button$")
+    public void iTapOnSignupButton() {
+        scr.mainScreen.signUpButton.click();
+    }
 
     @And("^I verify that I singed up$")
     public void iVerifyThatISingedUp() {
-        assertTrue(scr.userListScreen.list().isDisplayed());
+        assertTrue(scr.userListScreen.list.isDisplayed());
     }
 
     @Given("^I login to Instagram app with credentials:$")
